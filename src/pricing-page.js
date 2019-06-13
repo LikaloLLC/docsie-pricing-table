@@ -16,7 +16,7 @@ import MediaQuery from 'react-responsive';
 
 import { FaInfoCircle } from "react-icons/fa";
 
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
 
 class SimplePlanTier extends React.Component {
 
@@ -173,8 +173,6 @@ class PricingPage extends React.Component {
         this.state.categories.forEach((category, i) => {
             category.features.forEach((item, j) => {
 
-                    console.log("j value for name", j, category.name)
-
                     categoryFeatures.push(
                         <Container key={item.name}>
 
@@ -231,25 +229,30 @@ class PricingPage extends React.Component {
                         <MediaQuery query="(max-device-width: 1023px)">
                             <PlansAccordion className="accordion-plan-tier"/>
                         </MediaQuery>
-                        <div className="detail-plan-container">
-                            <Container style={{background: 'white'}}>
-                                <MediaQuery query="(min-device-width: 1024px)"  className="detailed-plan-view"> 
-                                    <Row>
+                        <MediaQuery query="(min-device-width: 1024px)">
+                            <div className="detail-plan-container">
+                                <Container style={{background: 'white'}}>
+                                    
+                                        <Row>
 
-                                        <Col sm="2">
+                                            <Col sm="2">
 
-                                            <h4 className="category-type-1">{this.state.categories[0].name}</h4>
-                                        </Col>
+                                                <h4 className="category-type-1">{this.state.categories[0].name}</h4>
+                                            </Col>
 
-                                        {detailRows}
-                                    </Row>
+                                            {detailRows}
+                                        </Row>
 
-                                    {categoryFeatures}
+                                        {categoryFeatures}
 
-                                    <p className="compare-plans" onClick={() => this.handleClick()}>Simple Plan Tier</p>
-                                </MediaQuery>
-                            </Container>
-                        </div>
+                                        <br />
+
+                                        <Button className="sign-up-btn accrd-btn" onClick={() => this.handleClick()}>
+                                            View Simple Plan Tier
+                                        </Button>
+                                </Container>
+                            </div>
+                        </MediaQuery>
                     </div>
                 }
             </div>
@@ -258,5 +261,7 @@ class PricingPage extends React.Component {
         );
     }
 }
+
+ReactDOM.render(<PricingPage />, document.getElementById('id'));
 
 export default PricingPage;

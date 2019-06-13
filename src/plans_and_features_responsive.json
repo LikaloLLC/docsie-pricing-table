@@ -15,13 +15,13 @@
           "values" : {
           "Standard": "5"
           },
-          "info": "blah blah blah"
+          "info": "Campaigns info"
         }, {
           "name": "Campaigns2",
           "values" : {
           "Standard": "52"
           },
-          "info": "blah blah blah"
+          "info": "Campaigns2 info"
         }]
     }, {
       "name":"Category 2",
@@ -50,13 +50,13 @@
           "values" : {
           "StartUp": "5"
           },
-          "info": "blah blah blah"
+          "info": "startupc1 info"
         }, {
           "name": "Campaigns2",
           "values" : {
           "StartUp": "52"
           },
-          "info": "blah blah blah"
+          "info": "startupc2 info"
         }]
     }, {
       "name":"Category 2",

@@ -3,14 +3,19 @@
   background-color: white;
 }
 
+.category-feature-xs {
+  border: none;
+  background-color: white;
+}
+
 .pricing-name {
   font-weight: 700!important;
 }
 
-.detailed-plan-view {
+/* .detailed-plan-view {
   background-color: white;
   margin-top: 20px;
-}
+} */
 
 .price-card {
   display: flex;
@@ -83,12 +88,25 @@
   color: #778283;
 }
 
+.btn-wrapper {
+  text-align: center;
+}
+
 .sign-up-btn {
   background-color: #b50000bf !important;
 }
 
+.sign-up-btn-xs {
+  background-color: #b50000bf !important;
+  /* position: absolute;
+  top: 50%; */
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
 .action-link {
   color: white !important;
+  font-size: 14px;
 }
 
 a.action-link:hover {
@@ -123,7 +141,7 @@ body {
 }
 
 .year-pricing {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .compare-plans {
@@ -198,7 +216,9 @@ p.compare-plans:hover {
 .product-price.product-price-sm {
   font-size: 30px;
   display: inline-block;
-    margin-left: 27%;
+  float: right;
+  position: relative;
+  bottom: 10px;
 }
 
 .product-price.product-price-sm .period {
@@ -220,6 +240,8 @@ p.compare-plans:hover {
 
 .accrd-btn {
   margin-bottom: 10px;
+  position: relative;
+  left: 14px;
 }
 
 .detail-plan-container {
@@ -239,4 +261,35 @@ p.compare-plans:hover {
 
 .row {
   margin-left: 0px !important;
+}
+
+/* accordion changes */
+.accordion__button {
+  background-color: #ffffff !important;
+}
+
+.accordion__item + .accordion__item {
+  border-top: none !important;
+}
+
+.accordion__button {
+  background-color: #ffffff !important;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 88% !important;
+  text-align: left;
+  border: none;
+  margin: auto !important;
+}
+
+.accordion__panel {
+  padding: 20px;
+  animation: fadein 0.35s ease-in;
+  width: 88% !important;
+  margin: auto !important;
+}
+
+.accordion__item {
+  box-sizing: content-box !important;
 }

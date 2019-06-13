@@ -23,6 +23,10 @@ import * as plans_and_features_responsive from './plans_and_features_responsive.
 
 import MediaQuery from 'react-responsive';
 
+import { FaInfoCircle } from "react-icons/fa";
+
+import ReactTooltip from 'react-tooltip';
+
 class CategoryFeatures extends React.Component {
     render() {
 
@@ -43,8 +47,10 @@ class CategoryFeatures extends React.Component {
                             <span style={{color: '#b50000bf', marginTop: '10px', fontWeight: 'bold'}}>{category.name}</span>
                              : ''}
                         <div className="plan-desc-feature">
-                            <div sm="2" className="category-feature">
-                                <div>{item.values[val]}&nbsp;{item.name}</div>
+                            <div sm="2" className="category-feature-xs">
+                                <div>{item.values[val]}&nbsp;{item.name} <FaInfoCircle data-tip={item.info}/></div>
+                                    
+                                <ReactTooltip />
                             </div>
                         </div>
                     </div>
@@ -68,7 +74,7 @@ class PlansAccordion extends React.Component {
         plans_and_features_responsive.default.plans.forEach((plan) => {
 
             plansAccordion.push(
-                <AccordionItem>
+                <AccordionItem key={plan.name}>
                     <AccordionItemHeading>
                         <AccordionItemButton>
                             <span className="plan-name">{plan.name}</span>
@@ -83,7 +89,7 @@ class PlansAccordion extends React.Component {
                     <AccordionItemPanel style={{background: '#ffffff', textAlign: 'center'}}>
                             <p className="text-light-gray">{plan.yearly_price} when you pay yearly</p>
                             <p>{plan.description}</p>
-                            <Button className="sign-up-btn accrd-btn">
+                            <Button className="sign-up-btn-xs">
                                 <a href={plan.call_to_action.url} className="action-link">{plan.call_to_action.text}</a>
                             </Button>
                             <CategoryFeatures categories={plan.categories}/>
