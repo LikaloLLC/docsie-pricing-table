@@ -42,6 +42,14 @@
   padding: 20px;
 }
 
+.pricing-panel .pricing-panel-footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0px;
+  left: 25%;
+  right: 25% !important;
+}
+
 .pricing-panel .pricing-panel-tier {
   text-transform: uppercase;
   font-weight: 400;
@@ -70,10 +78,6 @@
   font-size: 1.2rem;
 }
 
-.simple-plan-tier {
-  /* background-color: #de7272bf; */
-}
-
 .pricing-panel .pricing-panel-info {
   padding: 10px 0 0;
   color: #778283;
@@ -99,6 +103,10 @@ a.yearly:hover {
   color: #b50000bf !important;
 }
 
+.btn {
+  font-size: 15px !important;
+}
+
 .btn-secondary {
   color: #fff;
   /* background-color: #6c757d; */
@@ -106,7 +114,7 @@ a.yearly:hover {
 }
 
 body {
-  background-color: #de7272bf !important;
+  background-color: #f5505017 !important;
 }
 
 .simple-plan-tier-col {
@@ -155,4 +163,80 @@ p.compare-plans:hover {
 
 .category-type-1 {
   margin-top: 1.5rem!important;
+}
+
+/* start of mobile css */
+.price-page-mobile {
+  background: none;
+  margin-top: 10px;
+}
+
+.accordion {
+  border: none !important;
+  border-radius: 2px;
+}
+
+.plan-name {
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-align: left;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%; 
+}
+
+.product-price.product-price-sm {
+  font-size: 30px;
+}
+
+.product-price.product-price-sm .currency {
+  bottom: .1em;
+}
+
+.product-price.product-price-sm {
+  font-size: 30px;
+  display: inline-block;
+    margin-left: 27%;
+}
+
+.product-price.product-price-sm .period {
+  top: auto;
+  bottom: .1em;
+  font-size: .5em;
+}
+
+.text-light-gray {
+  color: #99A2A3!important;
+}
+
+.plan-desc-feature {
+  textAlign: center;
+  textAlign: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.accrd-btn {
+  margin-bottom: 10px;
+}
+
+.detail-plan-container {
+  /* background: white; */
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simple-plan-container {
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  margin-left: 0px !important;
 }

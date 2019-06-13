@@ -9,10 +9,19 @@
         "Large" : "25",
         "Premium" : "100"
         },
-        "info": "blah blah blah"
+        "info": "Campaigns feature info"
+      }, {
+        "name": "Campaigns2",
+        "values" : {
+        "Standard": "52",
+        "Medium":"102",
+        "Large" : "252",
+        "Premium" : "1002"
+        },
+        "info": "Campaigns feature info 2"
       }]
   }, {
-    "name":"Category 2",
+    "name":"Category 2 name",
     "features": [{
       "name": "Category 2",
       "values" : {

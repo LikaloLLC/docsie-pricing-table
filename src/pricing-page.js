@@ -4,13 +4,22 @@ import './index.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import {
-    Container, Button, Row, Col
+    Container, Button, Row, Col, Tooltip
 } from 'reactstrap';
 
-// import * as tiers from './tiers.json';
-// import * as plans_and_features from './plans_and_features.json';
+import * as tiers from './tiers.json';
+import * as plans_and_features from './plans_and_features.json';
+
+import PlansAccordion from './pricing-page-responsive.js';
+
+import MediaQuery from 'react-responsive';
+
+import { FaInfoCircle } from "react-icons/fa";
+
+import ReactTooltip from 'react-tooltip'
 
 class SimplePlanTier extends React.Component {
+
     render() {
 
         // console.log("props in SimplePlanTier", this.props);
@@ -70,10 +79,12 @@ class PricingPage extends React.Component {
 
     constructor (props) {
         super(props);
+
         this.state = {
             showDetailedPlanOveriew: false,
             tiers: [],
-            categories: []
+            categories: [],
+            tooltipOpen: false
         };
     }
 
@@ -94,8 +105,8 @@ class PricingPage extends React.Component {
 
                     this.setState({
                         // tiers: tiers.default.tiers,
-                        // categories: plans_and_features.default.categories
-                        categories: result.categories
+                        categories: plans_and_features.default.categories
+                        // categories: result.categories
                     });
 
                     // console.log("result from fetch API in pricing page", result)
@@ -119,9 +130,9 @@ class PricingPage extends React.Component {
                     // console.log("result response for tiers.json from docsie endpoint", result);
 
                     this.setState({
-                        // tiers: tiers.default.tiers,
+                        tiers: tiers.default.tiers,
                         // categories: plans_and_features.default.categories
-                        tiers: result.tiers
+                        // tiers: result.tiers
                     });
 
                     // console.log("result from fetch API in pricing page", result);
@@ -159,40 +170,24 @@ class PricingPage extends React.Component {
             )
         });
 
-        this.state.categories.forEach((category) => {
-            category.features.forEach((item) => {
-                if (category.name == "Track & Crawl") {
-                    categoryFeatures.push(
-                        <div key={category.name}>
+        this.state.categories.forEach((category, i) => {
+            category.features.forEach((item, j) => {
 
-                            <Row style={{ textAlign: 'center', textAlign: 'center', margin: 'auto' }}>
-                                <Col sm="2" className="category-feature">
-                                    <div>{item.name}</div>
-                                </Col>
-                                <Col sm="2" className="category-feature">
-                                    <div>{item.values.Standard}</div>
-                                </Col>
-                                <Col sm="2" className="category-feature">
-                                    <div>{item.values.Medium}</div>
-                                </Col>
-                                <Col sm="2" className="category-feature">
-                                    <div>{item.values.Large}</div>
-                                </Col>
-                                <Col sm="2" className="category-feature">
-                                    <div>{item.values.Premium}</div>
-                                </Col>
-                            </Row>
-                        </div>
-                    )
-                } else {
-                    categoryFeatures.push(
-                        <div key={category.name}>
+                    console.log("j value for name", j, category.name)
 
+                    categoryFeatures.push(
+                        <Container key={item.name}>
+
+                            { i!= 0 && j == 0 ?
                             <h4 className="category-type-1">{category.name}</h4>
-
+                             : ''}
+                            
                             <Row style={{ textAlign: 'center', textAlign: 'center', margin: 'auto' }}>
                                 <Col sm="2" className="category-feature">
-                                    <div>{item.name}</div>
+
+                                    <div>{item.name} <FaInfoCircle data-tip={item.info}/></div>
+                                    
+                                    <ReactTooltip />
                                 </Col>
                                 <Col sm="2" className="category-feature">
                                     <div>{item.values.Standard}</div>
@@ -207,40 +202,59 @@ class PricingPage extends React.Component {
                                     <div>{item.values.Premium}</div>
                                 </Col>
                             </Row>
-                        </div>
+                        </Container>
                     )
-                }
             })
         })
 
         return (
-            <div className="simple-plan-tier">
+            <div className="simple-detail-plan-tier-sm-md-lg">
                 {!this.state.showDetailedPlanOveriew
                     ?
-                    <Container>
+                    <div>
 
-                        <SimplePlanTier tiers={this.state.tiers} onClick={() => this.handleClick()} />
-                    </Container>
+                        <MediaQuery query="(max-device-width: 1023px)">
+                            <PlansAccordion className="accordion-plan-tier"/>
+                        </MediaQuery>
+                        <div className="simple-plan-container">
+                        <Container>
+
+                            <MediaQuery query="(min-device-width: 1024px)"> 
+                                <SimplePlanTier tiers={this.state.tiers} onClick={() => this.handleClick()} 
+                                    className="plan-tier"/>
+                            </MediaQuery>
+                        </Container>
+                        </div>
+                    </div>
                     :
-                    <Container className="detailed-plan-view">
+                    <div>
+                        <MediaQuery query="(max-device-width: 1023px)">
+                            <PlansAccordion className="accordion-plan-tier"/>
+                        </MediaQuery>
+                        <div className="detail-plan-container">
+                            <Container style={{background: 'white'}}>
+                                <MediaQuery query="(min-device-width: 1024px)"  className="detailed-plan-view"> 
+                                    <Row>
 
-                        <Row>
+                                        <Col sm="2">
 
-                            <Col sm="2">
+                                            <h4 className="category-type-1">{this.state.categories[0].name}</h4>
+                                        </Col>
 
-                                <h4 className="category-type-1">{this.state.categories[0].name}</h4>
-                            </Col>
+                                        {detailRows}
+                                    </Row>
 
-                            {detailRows}
-                        </Row>
+                                    {categoryFeatures}
 
-                        {categoryFeatures}
-
-                        <p className="compare-plans" onClick={() => this.handleClick()}>Simple Plan Tier</p>
-
-                    </Container>
+                                    <p className="compare-plans" onClick={() => this.handleClick()}>Simple Plan Tier</p>
+                                </MediaQuery>
+                            </Container>
+                        </div>
+                    </div>
                 }
             </div>
+
+            
         );
     }
 }
