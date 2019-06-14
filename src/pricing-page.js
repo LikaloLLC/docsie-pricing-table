@@ -262,6 +262,4 @@ class PricingPage extends React.Component {
     }
 }
 
-ReactDOM.render(<PricingPage />, document.getElementById('id'));
-
 export default PricingPage;

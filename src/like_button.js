@@ -1,6 +1,30 @@
-'use strict';
+// 'use strict';
 
-const e = React.createElement;
+// const e = React.createElement;
+
+// class LikeButton extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { liked: false };
+//   }
+
+//   render() {
+//     if (this.state.liked) {
+//       return 'You liked this.';
+//     }
+
+//     return e(
+//       'button',
+//       { onClick: () => this.setState({ liked: true }) },
+//       'Like'
+//     );
+//   }
+// }
+
+// const domContainer = document.querySelector('#like_button_container');
+// ReactDOM.render(e(LikeButton), domContainer);
+
+'use strict';
 
 class LikeButton extends React.Component {
   constructor(props) {
@@ -13,13 +37,16 @@ class LikeButton extends React.Component {
       return 'You liked this.';
     }
 
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
+    return (
+      // <button onClick={() => this.setState({ liked: true }) }>
+      //   Like Button
+      // </button>
+      <div>
+        kk
+      </div>
     );
   }
 }
 
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+let domContainer = document.querySelector('#like_button_container');
+ReactDOM.render(<LikeButton />, domContainer);
