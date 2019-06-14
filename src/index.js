@@ -10,7 +10,8 @@ import {
 // import * as tiers from './tiers.json';
 // import * as plans_and_features from './plans_and_features.json';
 
-import PricingPage from './pricing-page'
+import PricingPage from './pricing-page';
+import PricingPageResponsive from './pricing-page-responsive.js';
 
 // ========================================
 
