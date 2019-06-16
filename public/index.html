@@ -11,6 +11,9 @@
   <!-- Required for css effects -->
   <link rel="stylesheet" href="index.css">
 
+  <!-- Required font awesome -->
+  <link rel="stylesheet" href=" ./assets/font-awesome-4.7.0/css/font-awesome.min.css">
+
   <!-- Required for React.js -->
   <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -25,7 +28,10 @@
   <script src="./plans_and_features_responsive.js" type="text/javascript"></script>
   <script src="./assets/react-responsive/dist/react-responsive.js" type="text/javascript"></script>
   <script src="./assets/react-icons/fa" type="text/javascript"></script>
+  <script src="./assets/react-tooltip/dist/index.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-accessible-accordion@3.0.0/dist/umd/index.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/react-accessible-accordion@3.0.0/dist/fancy-example.css" crossorigin="anonymous">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/react-tooltip-15@1.1.4/dist/react-tooltip.js"></script> -->
 </head>
 
 <body>
@@ -52,7 +58,7 @@
 
       const {MediaQuery} = MediaQuery;
 
-      // const { FaInfoCircle } = { FaInfoCircle };
+      const ReactTooltip = ReactTooltip;
 
       class LikeButton extends React.Component {
 
@@ -114,7 +120,7 @@
                                     <div className="pricing-panel-footer">
                                         <div className="cta-wrapper">
                                             <Button className="sign-up-btn">
-                                                <a href={tier.call_to_action.url} className="action-link">{tier.call_to_action.text}</a>
+                                                <a href={tier.call_to_action.url} className="action-link-lg">{tier.call_to_action.text}</a>
                                             </Button>
                                         </div>
                                         <p className="compare-plans" onClick={() => this.props.onClick()}>compare plans</p>
@@ -163,7 +169,11 @@ class CategoryFeatures extends React.Component {
                              : ''}
                         <div className="plan-desc-feature">
                             <div sm="2" className="category-feature-xs">
-                                <div>{item.values[val]}&nbsp;{item.name} </div>
+                                <div>{item.values[val]}&nbsp;{item.name}&nbsp;
+                                    <span className="tooltip-info"><i className="fa fa-info-circle" aria-hidden="true" data-tip={item.info}></i>
+                                        <span className="tooltiptext-info">{item.info}</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -343,6 +353,10 @@ render() {
     // <FaInfoCircle data-tip={item.info}/>
     //                             <ReactTooltip />
 
+    // <div className="tooltip-info">Hover over me
+    //                                 <span className="tooltiptext-info">Tooltip text</span>
+    //                             </div>
+
     this.state.categories.forEach((category, i) => {
         category.features.forEach((item, j) => {
 
@@ -356,7 +370,11 @@ render() {
                         <Row style={{ textAlign: 'center', textAlign: 'center', margin: 'auto' }}>
                             <Col sm="2" className="category-feature">
 
-                                <div>{item.name}</div>
+                                <div style={{display: 'inline-block'}}>{item.name}&nbsp;
+                                    <span className="tooltip-info"><i className="fa fa-info-circle" aria-hidden="true" data-tip={item.info}></i>
+                                        <span className="tooltiptext-info">{item.info}</span>
+                                    </span>
+                                </div>
                                 
                             </Col>
                             <Col sm="2" className="category-feature">
@@ -423,7 +441,7 @@ render() {
                                 <br />
 
                                 <Button className="sign-up-btn view-simple-tier-btn" onClick={() => this.handleClick()}>
-                                  <div className="action-link view-simple-tier">View Simple Plan Tier</div>
+                                  <div className="action-link-lg view-simple-tier">View Simple Plan Tier</div>
                                 </Button>
                         </Container>
                     </div>
