@@ -50,6 +50,7 @@ class SimplePlanTier extends React.Component {
                                     <p></p>
                                     <p>{tier.description}</p>
                                     <p></p>
+                                    </div>
                                     <div className="pricing-panel-footer">
                                         <div className="cta-wrapper">
                                             <Button className="sign-up-btn">
@@ -58,7 +59,6 @@ class SimplePlanTier extends React.Component {
                                         </div>
                                         <p className="compare-plans" onClick={() => this.props.onClick()}>compare plans</p>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
